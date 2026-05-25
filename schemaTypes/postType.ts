@@ -55,16 +55,6 @@ export const postType = defineType({
         ],
       },
     }),
-    defineField({
-      name: 'excerpt',
-      title: 'Excerpt (Short Summary)',
-      description:
-        'A brief summary shown in article cards and meta description. 120–160 characters recommended.',
-      type: 'text',
-      rows: 3,
-      group: 'content',
-      validation: (rule) => rule.max(200),
-    }),
 
     // ── Cover Image ───────────────────────────────────────────
     defineField({
@@ -81,11 +71,6 @@ export const postType = defineType({
             'Describe the image for search engines and screen readers. e.g. "Yoga leggings flat lay on marble surface"',
           type: 'string',
           validation: (rule) => rule.required().warning('Alt text is required for SEO.'),
-        }),
-        defineField({
-          name: 'caption',
-          title: 'Caption (optional)',
-          type: 'string',
         }),
       ],
       validation: (rule) => rule.required(),
@@ -185,7 +170,7 @@ export const postType = defineType({
       name: 'seoTitle',
       title: 'SEO Title',
       description:
-        'Overrides the post title in browser tab and Google results. 50–60 characters recommended.',
+        'Overrides the post title in browser tab and Google results. 50–60 characters recommended. Leave blank to use the post title.',
       type: 'string',
       group: 'seo',
       validation: (rule) => rule.max(70),
@@ -193,27 +178,20 @@ export const postType = defineType({
     defineField({
       name: 'seoDescription',
       title: 'SEO Meta Description',
-      description: 'Shown in Google search results. 120–160 characters recommended.',
+      description:
+        'Shown in Google search results. 120–160 characters recommended. Leave blank to auto-generate from article content.',
       type: 'text',
       rows: 3,
       group: 'seo',
       validation: (rule) => rule.max(200),
     }),
     defineField({
-      name: 'ogImage',
-      title: 'OG Image (Social Share Image)',
+      name: 'keywords',
+      title: 'Keywords',
       description:
-        'Image shown when sharing on Twitter, LinkedIn, WeChat etc. Recommended: 1200×630px. Defaults to cover image if not set.',
-      type: 'image',
+        'Comma-separated keywords for this article. e.g. "yoga leggings, custom activewear, private label yoga"',
+      type: 'string',
       group: 'seo',
-      options: {hotspot: true},
-      fields: [
-        defineField({
-          name: 'alt',
-          title: 'Alt Text',
-          type: 'string',
-        }),
-      ],
     }),
   ],
 
