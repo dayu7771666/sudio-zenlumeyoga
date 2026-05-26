@@ -52,6 +52,7 @@ export const postType = defineType({
           {title: 'Production Guide', value: 'production-guide'},
           {title: 'Design Tips', value: 'design-tips'},
           {title: 'Industry Insights', value: 'industry-insights'},
+          {title: 'Yoga Wear Knowledge Base', value: 'yoga-wear-knowledge'},
         ],
       },
     }),
